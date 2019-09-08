@@ -14,9 +14,9 @@ function concertThis(artists) {
     console.log("\n-------\n\nSEARCHING FOR...." + artists + "'s next show");
     var url = "https://rest.bandsintown.com/artists/" + artists + "/events?app_id=codingbootcamp"
     request(url, function(error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode.body); // Print the response status code if a response was received
-        console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
+        // console.log('error:', error); // Print the error if one occurred
+        // console.log('statusCode:', response && response.statusCode.body); // Print the response status code if a response was received
+        // console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
         let userBand = JSON.parse(body);
         if (userBand.length > 0) {
             for (let i = 0; i < userBand.length; i++) {
@@ -30,7 +30,6 @@ function concertThis(artists) {
         }
     })
 }
-
 
 function spotifyThisSong(song) {
 
@@ -51,18 +50,21 @@ function spotifyThisSong(song) {
         .search({
             type: 'track',
             query: song,
+            limit: 1
         })
 
     .then(function(response) {
-        console.log(JSON.stringify(response));
+        console.log(JSON.stringify(response.data.external_urls));
         // let singer = JSON.parse(body);
-        let spotifyArr = tracks.items.album;
-        if (spotifyArr.length > 0) {
-            for (let i = 0; i < singer.length; i++) {
-                console.log(`\nSinger:  ${tracks.items.album.artists[0].name}`);
 
-            }
-        }
+        // if (spotifyArr.length > 0) {
+        // for (let i = 0; i < data.tracks.items.length; i++) {
+        //     let songData = data.tracks.items[i];
+
+        //     console.log("Artist:" + songData.artists[0].name);
+
+        // }
+        // }
 
     })
 
@@ -71,68 +73,30 @@ function spotifyThisSong(song) {
     });
 }
 
-
-// Artist(s)
-// The song's name
-// A preview link of the song from Spotify
-// The album that the song is from
-
-
-
-
 function movieThis(movieName) {
 
-    // Grab the movieName which will always be the third node argument.
-    // Grab the movieName which will always be the third node argument.
-    var movieName = process.argv[2];
-
-    // Then run a request with axios to the OMDB API with the movie specified
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-
-    // This line is just to help us debug against the actual URL.
-    console.log(queryUrl);
-
-    axios.get(queryUrl).then(
+    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy").then(
             function(response) {
-                console.log("Release Year: " + response.data.Year);
+                console.log("The movie's title is: " + response.data.Title);
+                console.log("Year the movie came out: " + response.data.Year);
+                console.log("IMDB rating: " + response.data.imdbRating);
+                console.log("Rotten tomatoes rating: " + response.data.Ratings[1].Value);
+                console.log("Country where produced: " + response.data.Country);
+                console.log("Language of the movie: " + response.data.Language);
+                console.log("Language of the movie: " + response.data.Plot);
+                console.log("Actors in the movie: " + response.data.Actors);
             })
         .catch(function(error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log("---------------Data---------------");
-                console.log(error.response.data);
-                console.log("---------------Status---------------");
-                console.log(error.response.status);
-                console.log("---------------Status---------------");
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an object that comes back with details pertaining to the error that occurred.
-                console.log(error.request);
-            } else {
+            if (error.response) {} else {
                 // Something happened in setting up the request that triggered an Error
-                console.log("Error", error.message);
+                console.log("We could not find this movie.  Please check your spelling and try again.");
             }
-            console.log(error.config);
         });
-
 }
-
-//    * Title of the movie.
-//    * Year the movie came out.
-//    * IMDB Rating of the movie.
-//    * Rotten Tomatoes Rating of the movie.
-//    * Country where the movie was produced.
-//    * Language of the movie.
-//    * Plot of the movie.
-//    * Actors in the movie.
 
 function pickCom(comData, funcData) {
     switch (comData) {
         case "concert-this":
-            // code block
-            console.log(funcData);
             concertThis(funcData);
             break;
         case "spotify-this-song":
