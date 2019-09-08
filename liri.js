@@ -88,6 +88,16 @@ function movieThis(movieName) {
         });
 }
 
+function whatItSays() {
+
+    fs.readFile('random.txt', "utf8", function(error, data) {
+        var txt = data.split(',');
+
+        spotifyThisSong(txt[1]);
+
+    })
+}
+
 //App Logic
 function pickCom(comData, funcData) {
     switch (comData) {
@@ -107,7 +117,7 @@ function pickCom(comData, funcData) {
         case "do-what-it-says":
             // code block
             console.log(funcData);
-            // whatItSays(funcData);
+            whatItSays(funcData);
             break;
         default:
             // code block
