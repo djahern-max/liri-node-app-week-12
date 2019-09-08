@@ -88,6 +88,7 @@ function movieThis(movieName) {
         });
 }
 
+//App Logic
 function pickCom(comData, funcData) {
     switch (comData) {
         case "concert-this":
@@ -115,7 +116,7 @@ function pickCom(comData, funcData) {
 
 }
 
-//App Logic
+
 function runThis(argOne, argTwo) {
 
     // console.log(argOne);
