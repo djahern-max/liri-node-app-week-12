@@ -24,6 +24,12 @@ Below is the code, command and results for running the "movie-this" command:
 
 ![](Images/pic6.JPG)
 
+Below is the code, command and results for running the "do-what-it-says" command:
+
+![](Images/pic7.JPG)
+
+
+
 
 
 
