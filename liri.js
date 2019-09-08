@@ -54,17 +54,11 @@ function spotifyThisSong(song) {
         })
 
     .then(function(response) {
-        console.log(JSON.stringify(response.data.external_urls));
-        // let singer = JSON.parse(body);
 
-        // if (spotifyArr.length > 0) {
-        // for (let i = 0; i < data.tracks.items.length; i++) {
-        //     let songData = data.tracks.items[i];
-
-        //     console.log("Artist:" + songData.artists[0].name);
-
-        // }
-        // }
+        console.log("Artist:   " + response.tracks.items[0].artists[0].name);
+        console.log("Song:   " + response.tracks.items[0].name);
+        console.log("Preview link of the song from Spotify:   " + response.tracks.items[0].preview_url);
+        console.log("Album:   " + response.tracks.items[0].album.name);
 
     })
 
@@ -121,22 +115,7 @@ function pickCom(comData, funcData) {
 
 }
 
-// function whatItSays() {
-//     fs.readFile("random.txt", "utf8", function(error, data) {
-//         if (error) {
-//             return console.log(error)
-//         }
-//         let dataArr = data.split(",");
-
-//         comData = dataArr[0];
-//         funcData = dataArr[1];
-
-//         pickCom(comData, funcData);
-
-//     })
-// }
-
-
+//App Logic
 function runThis(argOne, argTwo) {
 
     // console.log(argOne);
