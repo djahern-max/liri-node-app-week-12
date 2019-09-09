@@ -54,11 +54,16 @@ function spotifyThisSong(song) {
         })
 
     .then(function(response) {
+        let test = response;
 
-        console.log("Artist:   " + response.tracks.items[0].artists[0].name);
-        console.log("Song:   " + response.tracks.items[0].name);
-        console.log("Preview link of the song from Spotify:   " + response.tracks.items[0].preview_url);
-        console.log("Album:   " + response.tracks.items[0].album.name);
+        console.log(JSON.stringify(response.tracks.items, null, 2));
+        response.tracks.items.forEach(function(item, index) {
+            console.log("Artist:   " + item.artists[0].name);
+            console.log("Song:   " + item.name);
+            console.log("Preview link of the song from Spotify:   " + item.preview_url);
+            console.log("Album:   " + item.album.name);
+            console.log(item.name)
+        })
 
     })
 
