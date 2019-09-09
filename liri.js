@@ -56,13 +56,13 @@ function spotifyThisSong(song) {
     .then(function(response) {
         let test = response;
 
-        console.log(JSON.stringify(response.tracks.items, null, 2));
+        // console.log(JSON.stringify(response.tracks.items, null, 2));
         response.tracks.items.forEach(function(item, index) {
             console.log("Artist:   " + item.artists[0].name);
             console.log("Song:   " + item.name);
             console.log("Preview link of the song from Spotify:   " + item.preview_url);
             console.log("Album:   " + item.album.name);
-            console.log(item.name)
+            // console.log(item.name)
         })
 
     })
