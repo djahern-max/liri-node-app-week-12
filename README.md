@@ -18,7 +18,7 @@ Below is the code, command and results for running the "concert-this" command:
 
 Below is the code, command and results for running the "spotify-this-song" command:
 
-![](Images/pic5.JPG)
+![](Images/pic5v2.JPG)
 
 Below is the code, command and results for running the "movie-this" command:
 
